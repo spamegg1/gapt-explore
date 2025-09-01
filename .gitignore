@@ -1,0 +1,57 @@
+# Scala
+*.class
+*.log
+*.tmp
+*.swp
+*.swo
+*.bak
+*.orig
+
+# SBT
+target/
+project/target/
+project/project/
+lib_managed/
+src_managed/
+.idea/
+.cache/
+.history/
+dist/
+out/
+
+# Scala-cli
+.scala-build/
+.scala-deps/
+.scala-steward/
+.worksheet/
+
+# Ensime
+.ensime_cache/
+.ensime
+
+# Metals (VS Code Scala extension)
+.metals/
+.bloop/
+.bsp/
+.vscode/
+
+# MacOS
+.DS_Store
+
+# Linux
+*~
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# VS Code
+.vscode/
+
+# Test results
+/test-results/
+/coverage/
+/test-output/
+/test-reports/
