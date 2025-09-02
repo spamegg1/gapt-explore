@@ -20,18 +20,36 @@ val D = (A & B) --> C
 val S1 = Sequent()
 val S2 = Sequent(List(1, 2), List(3, 4))
 val S3 = Sequent(List(foa"A", foa"B"), List(foa"C", foa"D"))
+val S4 = hos"P a, a = b :- P b"
 
 // experiment with pattern matching
+import gapt.expr.formula.fol.FOLFormula
 val z = G match
-  case _: FOLAtom => ???
-  case And(a, b)  => ???
-  case Or(a, b)   => ???
-  case Neg(a)     => ???
-  case Imp(a, b)  => ???
-  case Iff(a, b)  => ???
-  case All(x, f)  => ???
-  case Ex(x, f)   => ???
+  case _: Atom   => "atom"
+  case And(a, b) => "and"
+  case Or(a, b)  => "or"
+  case Neg(a)    => "neg"
+  case Imp(a, b) => "imp"
+  case Iff(a, b) => "iff"
+  case All(x, f) => "all"
+  case Ex(x, f)  => "ex"
+
+enum Same(x: FOLTerm, y: FOLTerm) extends FOLAtom:
+  case SameRow(x: FOLTerm, y: FOLTerm) extends Same(x, y)
+  case SameCol(x: FOLTerm, y: FOLTerm) extends Same(x, y)
+  def alphaEquals(
+      that: gapt.expr.Expr,
+      lcBound: Int,
+      thisCtx: Map[gapt.expr.Var, Int],
+      thatCtx: Map[gapt.expr.Var, Int]
+  ): Boolean = ???
+  def alphaEquivalentHashCode: Int             = ???
+  def syntaxEquals(e: gapt.expr.Expr): Boolean = ???
+  def ty: gapt.expr.ty.Ty                      = ???
+import Same.*
 
 @main
 def run: Unit =
-  println(H2)
+  val F2 = fof"SameRow(x,c)"
+  F2 match
+    case FOLAtom("SameRow", FOLVar("x") :: FOLConst("c") :: Nil) => println("yay")

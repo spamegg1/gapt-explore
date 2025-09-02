@@ -6,6 +6,13 @@ export gapt.expr.stringInterpolationForExpressions
 export gapt.expr.Const
 export gapt.expr.ty.{Ti, To}
 export gapt.expr.formula.{All, And, Atom, Or, Neg, Ex, Imp, Iff}
-export gapt.expr.formula.fol.{FOLVar, FOLConst, FOLFunction, FOLAtom}
+export gapt.expr.formula.fol.{
+  FOLVar,
+  FOLTerm,
+  FOLConst,
+  FOLFunction,
+  FOLAtom,
+  FOLPosition
+}
 
 export gapt.proofs.Sequent
